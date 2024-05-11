@@ -17,6 +17,8 @@ def sdl_window(title, width, height, flags):
     sdl3.SDL_CreateWindowAndRenderer(title.encode(), width, height, flags, ctypes.byref(window), ctypes.byref(renderer))
     return window, renderer
 
+
+# exit sdl and clean up
 def sdl_exit(window, render):
     sdl3.SDL_DestroyRenderer(render)
     sdl3.SDL_DestroyWindow(window)
