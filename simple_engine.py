@@ -15,9 +15,11 @@ class SDL_Event(ctypes.Structure):
 # initialize sdl
 def simple_init():
     global sdl
-    if sys.platform.lower() == "linux":
+    if sys.platform.lower().startswith("linux"):
         sdl = ctypes.CDLL("libSDL2.so")
-    if sys.platform.lower() == "windows":
+    if sys.platform.lower().startswith("darwin"):
+        sdl = ctypes.CDLL("libSDL2.dylib")
+    if sys.platform.lower().startswith("win"):
         sdl = ctypes.CDLL("SDL2.dll")
     sdl.SDL_Init(0x00000001 | 0x00000010 | 0x00000020 | 0x00000200 | 0x00001000 | 0x00002000 | 0x00004000 | 0x00008000 | 0x00100000)
 
