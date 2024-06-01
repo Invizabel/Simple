@@ -1,8 +1,7 @@
 from simple_engine import *
-import time
 
 def main():
-    square = [(50, 50, 100, 50),
+    lines = [(50, 50, 100, 50),
               (50, 50, 50, 100),
               (50, 100, 100, 100),
               (100, 100, 100, 150),
@@ -29,16 +28,17 @@ def main():
     simple_init()
     simple_display(1280, 720, 2)
     
-
-    while True:
+    running = True
+    while running:
+        simple_event()
+        simple_fps(60)
+        
         simple_background(128, 128, 128, 255)
-
-        for i in square:
-            simple_line(0, 0, 255, 0, i[0], i[1], i[2], i[3])
+        
+        for line in lines:
+            simple_line(0, 0, 255, 0, line[0], line[1], line[2], line[3])
 
         simple_update()
-
-    simple_exit()
     
 if __name__ == "__main__":
     main()
